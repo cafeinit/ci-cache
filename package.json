@@ -1,0 +1,24 @@
+{
+  "name": "ci-cache",
+  "version": "1.0.0",
+  "description": "simple cache for nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cafeinit/ci-cache.git"
+  },
+  "keywords": [
+    "cache",
+    "ttl",
+    "cafeinit"
+  ],
+  "author": "burning",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cafeinit/ci-cache/issues"
+  },
+  "homepage": "https://github.com/cafeinit/ci-cache#readme"
+}
