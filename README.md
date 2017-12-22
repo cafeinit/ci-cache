@@ -11,28 +11,30 @@ npm install ci-cache --save
 ## Usage
 
 ```javascript
-const CICache = require('CICache')
+const CICache = require('ci-cache')
 
 /**
- * @param ttl {Number} default 3600
- */
-const cache = new CICache(30)
+* @param ttl {Number} default 3600
+*/
+const cache = new CICache(3, 1)
 cache.onError = (err) => {
-  console.warn(err)
+ console.warn(err)
 }
 
 /**
- * @param key {String}
- * @param value {Object}
- * @param ttl {Number} default cache.ttl
- */
-cache.setItem('a', 100, 60)
+* @param key {String}
+* @param value {Object}
+* @param ttl {Number} default cache.ttl
+*/
+cache.setItem('a', 100, 5)
 console.log('a', cache.getItem('a'))
 cache.setItem('b', 200)
 console.log('b', cache.getItem('b'))
 
 setTimeout(() => {
   console.log('a', cache.getItem('a'))
+
+  cache.setItem('b', 200)
   console.log('b', cache.getItem('b'))
-}, 35 * 1000)
+}, 6 * 1000)
 ```

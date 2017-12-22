@@ -23,6 +23,7 @@ class CICache {
         this.getItem(key)
       }
 
+      console.log('CICache._check', this._count)
       this._check()
     }, 1000)
   }
@@ -78,6 +79,7 @@ class CICache {
       val: val,
       expires: this._getNow() + ttl
     }
+    console.log('CICache.setItem', key, this._data[key], this._count)
   }
 }
 
