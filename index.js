@@ -5,9 +5,10 @@
  */
 
 class CICache {
-  constructor(ttl, maxCount) {
-    this._ttl = (parseInt(ttl) || 3600) * 1000
-    this._maxCount = parseInt(maxCount) || 200
+  constructor(ttl = 3600, maxCount = 200, isDebug = false) {
+    this.isDebug = isDebug
+    this._ttl = parseInt(ttl) * 1000
+    this._maxCount = parseInt(maxCount)
     this._count = 0
     this._data = {}
     this._check()
@@ -23,7 +24,7 @@ class CICache {
         this.getItem(key)
       }
 
-      console.log('CICache._check', this._count)
+      // this._log('CICache._check', this._count)
       this._check()
     }, 1000)
   }
@@ -31,6 +32,12 @@ class CICache {
   _error(message) {
     if (typeof this.onError == 'function') {
       this.onError(message)
+    }
+  }
+
+  _log() {
+    if (this.isDebug) {
+      console.log.apply(this, arguments)
     }
   }
 
@@ -45,6 +52,7 @@ class CICache {
       else {
         this._count--
         delete this._data[key]
+        this._log('CICache.autoRemoveItem', key, val, this._count)
       }
     }
 
@@ -79,7 +87,7 @@ class CICache {
       val: val,
       expires: this._getNow() + ttl
     }
-    console.log('CICache.setItem', key, this._data[key], this._count)
+    this._log('CICache.setItem', key, this._data[key], this._count)
   }
 }
 

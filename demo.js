@@ -10,6 +10,7 @@ const CICache = require('./index')
 * @param ttl {Number} default 3600
 */
 const cache = new CICache(3, 1)
+cache.isDebug = true
 cache.onError = (err) => {
  console.warn(err)
 }
