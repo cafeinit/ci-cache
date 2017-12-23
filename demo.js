@@ -22,11 +22,15 @@ cache.onError = (err) => {
 */
 cache.setItem('a', 100, 5)
 console.log('a', cache.getItem('a'))
+cache.removeItem('a')
+console.log('a', cache.getItem('a'))
+
 cache.setItem('b', 200)
 console.log('b', cache.getItem('b'))
 
 setTimeout(() => {
   console.log('a', cache.getItem('a'))
+
 
   cache.setItem('b', 200)
   console.log('b', cache.getItem('b'))

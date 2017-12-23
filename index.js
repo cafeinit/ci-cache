@@ -89,6 +89,21 @@ class CICache {
     }
     this._log('CICache.setItem', key, this._data[key], this._count)
   }
+
+  removeItem(key) {
+    if (!key) {
+      this._error('key undefined')
+      return
+    }
+
+    let val = this._data[key]
+    console.log('test val', val)
+    if (val !== null) {
+      this._count--
+      delete this._data[key]
+      this._log('CICache.removeItem', key, val, this._count)
+    }
+  }
 }
 
 module.exports = CICache
